@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <!-- Rolling file appender for Debug logs -->
+        <RollingFile name="DebugAppender" fileName="Timer-Debug.log"
+                     filePattern="Timer-Debug-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10" />
+        </RollingFile>
+
+        <!-- Rolling file appender for Info logs -->
+        <RollingFile name="InfoAppender" fileName="Timer-Info.log"
+                     filePattern="Timer-Info-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10" />
+        </RollingFile>
+
+        <!-- Rolling file appender for Error logs -->
+        <RollingFile name="ErrorAppender" fileName="Timer-Error.log"
+                     filePattern="Timer-Error-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10" />
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="DebugAppender" level="debug"/>
+            <AppenderRef ref="InfoAppender" level="info"/>
+            <AppenderRef ref="ErrorAppender" level="error"/>
+        </Root>
+    </Loggers>
+</Configuration>
